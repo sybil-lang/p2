@@ -22,17 +22,17 @@ function App() {
   const [userToken, tokenDispatch] = useReducer(tokenReducer, token)
   const [user, userDispatch] = useReducer(userReducer, {})
   useEffect(() => {
-    console.log("App.js");
+    // console.log("App.js");
     const fetchUser = async () => {
       try {
-        console.log("fetchUser");
+        // console.log("fetchUser");
         const res = await axios.get("/user/getUser",{
           headers: {
             Authorization: `Bearer ${userToken}`
           }
         })
         //tokenDispatch({type: "SET_TOKEN", payload: res.token})
-        console.log("res.data: ", res.data);
+        // console.log("res.data: ", res.data);
         userDispatch({type: "SET_USER", payload:res.data.user})
       } catch (error) {
         console.log(error);
