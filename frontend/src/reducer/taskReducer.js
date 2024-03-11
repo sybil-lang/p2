@@ -29,6 +29,21 @@ function taskReducer(tasks, action) {
                 return task
             })
         }
+      case "EDIT_TASK": {
+            // Edit task logic
+            return tasks.map((task) => {
+                if (task._id === action.id) {
+                    return {
+                        ...task,
+                        title: action.title,
+                        description: action.description
+                    };
+                } else {
+                    return task;
+                }
+            });
+        }
+      
         default: {
             throw Error("Unknown Action" + action.type)
         }
